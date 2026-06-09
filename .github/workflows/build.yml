@@ -85,7 +85,7 @@ jobs:
         run: |
           git clone https://x-access-token:${{ env.GH_TOKEN }}@github.com/${{ env.CONFIG_REPO }}.git config-repo
           cd config-repo
-          sed -i "s/IMAGE_TAG_REPLACEMENT/${{ steps.version.outputs.VERSION }}/g" deployment.yaml
+          sed -i 's|tag: .*|tag: "${{ steps.version.outputs.VERSION }}"|' values-stg.yaml
           git config user.email "ci@grading-platform.com"
           git config user.name "GitHub CI"
           git add .
