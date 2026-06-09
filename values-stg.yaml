@@ -1,0 +1,28 @@
+name: config-server
+hostname: config
+
+replicaCount: 1
+
+image:
+  repository: vucongtuanduong/grading-config-server
+  tag: "latest"
+  pullPolicy: Always
+
+global:
+  domain: vucongtuanduong.dpdns.org
+  prefix: dev2
+
+spring:
+  profilesActive: stg
+
+service:
+  type: ClusterIP
+  port: 8086
+
+resources:
+  requests:
+    cpu: 200m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
